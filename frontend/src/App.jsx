@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
+import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import CarDetails from "./pages/CarDetails";
 import Cars from "./pages/Cars";
@@ -19,13 +20,15 @@ import ManageCars from "./pages/owner/ManageCars";
  */
 function App() {
   // State quản lý hiển thị modal đăng nhập
-  const [_showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   // Kiểm tra xem đường dẫn hiện tại có phải là trang owner không
   const isOwnerPath = useLocation().pathname.startsWith("/owner");
 
   return (
     <div>
+      {/* Hiển thị modal đăng nhập/đăng ký nếu showLogin = true */}
+      {showLogin && <Login setShowLogin={setShowLogin} />}
       {/* Hiển thị Navbar nếu không phải trang owner */}
       {!isOwnerPath && <Navbar onShowLogin={setShowLogin} />}
 
