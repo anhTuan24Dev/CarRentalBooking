@@ -18,7 +18,11 @@
   "main": "server.js",
   "name": "backend",
   "scripts": {
+    "check": "biome check --write",
+    "check2": "biome check --write --unsafe",
     "dev": "nodemon server.js",
+    "format": "biome format --write",
+    "lint": "biome lint --write",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
