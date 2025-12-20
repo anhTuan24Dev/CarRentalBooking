@@ -2,6 +2,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/db.js";
+import ownerRouter from "./routes/ownerRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 
 // Load biến môi trường
 dotenv.config();
@@ -11,6 +13,8 @@ const app = express();
 // Các middleware
 app.use(cors());
 app.use(express.json());
+app.use("/api/users", userRouter);
+app.use("/api/owner", ownerRouter);
 
 // Tuyến cơ bản
 app.get("/", (_req, res) => {
